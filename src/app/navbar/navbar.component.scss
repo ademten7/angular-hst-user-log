@@ -1,0 +1,73 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.mat-toolbar {
+  background-color: #2c64b2;
+
+  .header {
+    font-size: 22px;
+    margin-left: 10px;
+  }
+  .buttons {
+    height: 69px;
+    width: 66px;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    display: grid;
+    place-items: center;
+  }
+  .hst {
+    border-right: 1px solid white;
+    img {
+      width: 65px;
+      height: 55px;
+    }
+  }
+  .image-user {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+  .user-items {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .user-name {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+}
+.navbar {
+  border-bottom: 1px solid rgb(228, 224, 224);
+  -webkit-box-shadow: 0px 10px 13px -7px #000000,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  .nav-items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+    .nav-item {
+      list-style: none;
+      margin-left: 20px;
+    }
+  }
+}
+.sub-nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+  li {
+    list-style: none;
+    margin-left: 10px;
+  }
+  .first-path {
+    color: rgb(172, 168, 168);
+  }
+  .second-path {
+    color: #2c64b2;
+  }
+}

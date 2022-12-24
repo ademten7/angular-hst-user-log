@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Neue Aktion Hinzufügen</h1>
+<div mat-dialog-content>
+  <!--import ReactiveFormsModule and FormsModule(for [(ngModel)]) in app.module.ts-->
+  <form>
+    <mat-form-field appearance="outline">
+      <mat-label>Kategorie</mat-label>
+      <mat-select formControlName="category" placeholder="Kategorie">
+        <mat-option *ngFor="let item of categories" [value]="item">{{
+          item
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mandant</mat-label>
+      <mat-select formControlName="department" placeholder="Mandant">
+        <mat-option *ngFor="let item of departments" [value]="item">{{
+          item
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Benutzer</mat-label>
+      <input formControlName="user" matInput placeholder="Benutzer" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Objekt</mat-label>
+      <mat-select formControlName="object" placeholder="Objekt">
+        <mat-option *ngFor="let item of objects" [value]="item">{{
+          item
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Aktionen</mat-label>
+      <input formControlName="action" matInput placeholder="Aktionen" />
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions [align]="'end'">
+  <button class="cancel-button" mat-raised-button mat-dialog-close color="warn">
+    Cancel
+  </button>
+  <button mat-raised-button color="primary">
+    Save
+    <!-- {{ actionBtn }} -->
+  </button>
+</div>

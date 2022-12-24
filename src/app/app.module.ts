@@ -8,6 +8,9 @@ import { MaterialDesignsModule } from './material-designs/material-designs.modul
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserLogComponent } from './user-log/user-log.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -21,8 +24,11 @@ import { DialogComponent } from './dialog/dialog.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialDesignsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

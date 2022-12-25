@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserLog } from '../interfaces/userLog';
 import { ApiService } from '../services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActionsService } from '../services/actions.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-user-log',
@@ -18,8 +20,7 @@ export class UserLogComponent implements OnInit {
   objects: string[] = this.actions.objects;
   users: string[] = this.actions.users;
   fastSearch: string[] = this.actions.fastSearch;
-
-  constructor(private api: ApiService, private actions: ActionsService) {}
+  searchUser: string = '';
   displayedColumns: string[] = [
     'Nr.',
     'Datum',
@@ -34,6 +35,12 @@ export class UserLogComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(
+    private api: ApiService,
+    private actions: ActionsService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getAllUserLog();
@@ -52,6 +59,12 @@ export class UserLogComponent implements OnInit {
       error: (err) => {
         alert('Fehler beim Abruf von Aktionen!!!');
       },
+    });
+  }
+  editUserLog(row: UserLog) {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
+      data: row,
     });
   }
 

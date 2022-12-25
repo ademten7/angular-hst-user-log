@@ -7,10 +7,6 @@ table {
   width: 100%;
 }
 
-// td,
-// th {
-//   width: 10%;
-// }
 th {
   background-color: #2c64b2;
   color: aliceblue;
@@ -36,4 +32,12 @@ th {
 }
 .blue-button {
   background-color: #2c64b2;
+}
+.mat-sort-header-arrow {
+  color: white !important;
+}
+.no-filter {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }

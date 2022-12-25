@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
 import { ActionsService } from './services/actions.service';
+import { FilterActionsPipe } from './pipes/filter-actions.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ActionsService } from './services/actions.service';
     NavbarComponent,
     UserLogComponent,
     DialogComponent,
+    FilterActionsPipe,
   ],
   imports: [
     BrowserModule,

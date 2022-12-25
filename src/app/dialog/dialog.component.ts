@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActionsService } from '../services/actions.service';
+import { UserLog } from '../interfaces/userLog';
 
 @Component({
   selector: 'app-dialog',
@@ -21,6 +22,7 @@ export class DialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private api: ApiService,
     private actions: ActionsService,
+    @Inject(MAT_DIALOG_DATA) public editData: UserLog,
     private dialogRef: MatDialogRef<DialogComponent>
   ) {}
 
@@ -33,6 +35,16 @@ export class DialogComponent implements OnInit {
       action: ['', Validators.required],
       date: Date.now(),
     });
+    //to pass the edit values on form
+    if (this.editData) {
+      this.userLogForm.controls['category'].setValue(this.editData.category);
+      this.userLogForm.controls['department'].setValue(
+        this.editData.department
+      );
+      this.userLogForm.controls['user'].setValue(this.editData.user);
+      this.userLogForm.controls['object'].setValue(this.editData.object);
+      this.userLogForm.controls['action'].setValue(this.editData.action);
+    }
   }
   addUserLog() {
     // console.log(this.userLogForm.value);

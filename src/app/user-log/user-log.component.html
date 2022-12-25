@@ -8,7 +8,7 @@
     <!-- mandant -->
     <mat-form-field appearance="outline" class="example-form-field">
       <mat-label>Mandant</mat-label>
-      <mat-select placeholder="Bitte Auswählen">
+      <mat-select placeholder="Mandant">
         <mat-option *ngFor="let item of departments" [value]="item">{{
           item
         }}</mat-option>
@@ -88,6 +88,9 @@
       </button>
     </div>
   </div>
+
+  <!--Table  -->
+
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="Nr.">
@@ -126,9 +129,9 @@
       </ng-container>
 
       <ng-container matColumnDef="Edit/Delete">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit/Delete</th>
+        <th mat-header-cell *matHeaderCellDef>Edit/Delete</th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button color="primary">
+          <button mat-icon-button color="primary" (click)="editUserLog(row)">
             <mat-icon>edit</mat-icon>
           </button>
           <button mat-icon-button color="warn">
@@ -142,8 +145,8 @@
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">
-          No data matching the filter "{{ input.value }}"
+        <td class="mat-cell no-filter" colspan="4">
+          Keine Daten, die dem Filter entsprechen!!!
         </td>
       </tr>
     </table>

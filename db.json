@@ -3,56 +3,29 @@
     {
       "category": "Alarm Manager",
       "department": "Projektierung",
-      "user": "Mang",
+      "user": "Julia Krüger",
       "object": "Login",
-      "action": "HTML5",
-      "date": 1671921191116,
+      "action": "Iphone",
+      "date": 1671997176179,
       "id": 1
     },
     {
-      "category": "Analyse",
-      "department": "Finanzabteilung",
-      "user": "CSS",
-      "object": "Aktualisieren",
-      "action": "Strawberry",
-      "date": 1671921553143,
+      "category": "System",
+      "department": "Projektierung",
+      "user": "Thomas Hauptmann",
+      "object": "Login",
+      "action": "CSS",
+      "date": 1671997198838,
       "id": 2
     },
     {
-      "category": "\tBetriebsstundenzähler",
-      "department": "Planung",
-      "user": "CSS",
-      "object": "Attendance",
-      "action": "Strawberry2",
-      "date": 1671922471152,
-      "id": 3
-    },
-    {
-      "category": "System",
-      "department": "Planung",
-      "user": "Mang",
-      "object": "Login",
-      "action": "Strawberry2",
-      "date": 1671922618830,
-      "id": 4
-    },
-    {
       "category": "Analyse",
-      "department": "Projektierung",
-      "user": "Julia Krüger",
-      "object": "Login",
-      "action": "Apple",
-      "date": 1671924914707,
-      "id": 5
-    },
-    {
-      "category": "Alarm Manager",
-      "department": "Projektierung",
-      "user": "Julia Krüger",
-      "object": "Login",
-      "action": "HTML5",
-      "date": 1671928098051,
-      "id": 6
+      "department": "Planung",
+      "user": "Lea Flitz",
+      "object": "Attendance",
+      "action": "HTML",
+      "date": 1671997219492,
+      "id": 3
     }
   ],
   "comments": [

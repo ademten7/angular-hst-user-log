@@ -11,6 +11,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './services/api.service';
+import { ActionsService } from './services/actions.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ApiService } from './services/api.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ApiService],
+  providers: [ApiService, ActionsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

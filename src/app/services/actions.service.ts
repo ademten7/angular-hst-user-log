@@ -1,12 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserLog } from '../interfaces/userLog';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
-  API_URL: string = 'http://localhost:3000/userLogList';
+export class ActionsService {
   allUserLogs: any = [];
   categories: string[] = [
     'Alarm Manager',
@@ -41,18 +38,33 @@ export class ApiService {
     'Leo Schneider',
     'Hendrik Fleitman',
   ];
+  fastSearch: string[] = [
+    'Alarm Manager',
+    'System',
+    'Betriebsstundenzähler',
+    'Analyse',
+    'DB Archive',
+    'Projektierung',
+    'Planung',
+    'Personalabteilung',
+    'Finanzabteilung',
+    'Attendance',
+    'Login',
+    'Aktualisieren',
+    'Projektierung',
+    'Exportieren',
+    'Löschen',
+    'Attendance',
+    'Bearbeiten',
+    'Thomas Hauptmann',
+    'Julia Krüger',
+    'Hendrik Fleitman',
+    'Celine Müller',
+    'Lea Flitz',
+    'Carla Maximilian',
+    'Leo Schneider',
+    'Hendrik Fleitman',
+  ];
 
-  constructor(private http: HttpClient) {}
-  postUserLog(action: UserLog) {
-    return this.http.post(this.API_URL, action);
-  }
-  getUserLogs() {
-    return this.http.get(this.API_URL);
-  }
-  putUserLog(action: UserLog, id: number) {
-    return this.http.put(this.API_URL + id, action);
-  }
-  deleteUserLog(id: number) {
-    this.http.delete(this.API_URL + id);
-  }
+  constructor() {}
 }

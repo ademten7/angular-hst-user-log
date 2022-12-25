@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ActionsService } from '../services/actions.service';
 
 @Component({
   selector: 'app-dialog',
@@ -9,45 +10,17 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./dialog.component.scss'],
 })
 export class DialogComponent implements OnInit {
-  categories: string[] = [
-    'Alarm Manager',
-    'System',
-    'Betriebsstundenzähler',
-    'Analyse',
-  ];
-  departments: string[] = [
-    'DB Archive',
-    'Projektierung',
-    'Planung',
-    '	Personalabteilung',
-    'Finanzabteilung',
-  ];
-  objects: string[] = [
-    'Attendance',
-    'Login',
-    'Aktualisieren',
-    'Projektierung',
-    'Exportieren',
-    'Löschen',
-    'Attendance',
-    'Bearbeiten',
-  ];
-  users: string[] = [
-    'Thomas Hauptmann',
-    'Julia Krüger',
-    'Hendrik Fleitman',
-    'Celine Müller',
-    'Lea Flitz',
-    'Carla Maximilian',
-    'Leo Schneider',
-    'Hendrik Fleitman',
-  ];
+  categories: string[] = this.actions.categories;
+  departments: string[] = this.actions.departments;
+  objects: string[] = this.actions.objects;
+  users: string[] = this.actions.users;
 
   userLogForm!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private api: ApiService,
+    private actions: ActionsService,
     private dialogRef: MatDialogRef<DialogComponent>
   ) {}
 

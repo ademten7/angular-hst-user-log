@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActionsService } from '../services/actions.service';
 
 @Component({
   selector: 'app-user-log',
@@ -11,8 +12,14 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./user-log.component.scss'],
 })
 export class UserLogComponent implements OnInit {
-  constructor(private api: ApiService) {}
   // userLogList: UserLog[] = [];
+  categories: string[] = this.actions.categories;
+  departments: string[] = this.actions.departments;
+  objects: string[] = this.actions.objects;
+  users: string[] = this.actions.users;
+  fastSearch: string[] = this.actions.fastSearch;
+
+  constructor(private api: ApiService, private actions: ActionsService) {}
   displayedColumns: string[] = [
     'Nr.',
     'Datum',
@@ -37,10 +44,10 @@ export class UserLogComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.api.allUserLogs = [...res];
+        this.actions.allUserLogs = [...res];
         //this.userLogList = this.api.allUserLogs;
         //console.log(this.userLogList);
-        console.log(this.api.allUserLogs);
+        console.log(this.actions.allUserLogs);
       },
       error: (err) => {
         alert('Fehler beim Abruf von Aktionen!!!');

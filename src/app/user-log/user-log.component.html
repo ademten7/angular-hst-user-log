@@ -1,10 +1,93 @@
 <div class="container">
-  <h1>Benutzerlogbuch</h1>
-  <mat-form-field appearance="standard">
-    <mat-label>Wonach Suchen Sie? </mat-label>
-    <input matInput (keyup)="applyFilter($event)" #input />
-  </mat-form-field>
+  <h2>Benutzerlogbuch</h2>
+  <div class="filter-top">
+    <mat-form-field appearance="outline" class="example-form-field-search">
+      <mat-label>Wonach Suchen Sie? </mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input />
+    </mat-form-field>
+    <!-- mandant -->
+    <mat-form-field appearance="outline" class="example-form-field">
+      <mat-label>Mandant</mat-label>
+      <mat-select placeholder="Bitte Auswählen">
+        <mat-option *ngFor="let item of departments" [value]="item">{{
+          item
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-form-field">
+      <mat-label>Benutzer</mat-label>
+      <mat-select placeholder="Benutzer">
+        <mat-option *ngFor="let item of users" [value]="item">{{
+          item
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-form-field">
+      <mat-label>Objekt</mat-label>
+      <mat-select placeholder="Objekt">
+        <mat-option *ngFor="let item of objects" [value]="item">{{
+          item
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Zeitraum Start</mat-label>
+        <input matInput [matDatepicker]="startPicker" />
 
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Zeitraum Ende</mat-label>
+        <input matInput [matDatepicker]="endPicker" />
+
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endPicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Schnellauswahl</mat-label>
+        <mat-select placeholder="Benutzer">
+          <mat-option *ngFor="let item of fastSearch" [value]="item">{{
+            item
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        class="filter-button blue-button"
+        mat-raised-button
+        color="primary"
+      >
+        <mat-icon>filter_list</mat-icon>
+        Filter
+      </button>
+      <button mat-raised-button color="warn">
+        <mat-icon>delete</mat-icon> Löschen
+      </button>
+    </div>
+  </div>
+  <div class="title-table-continer">
+    <h2>Ergebnissie</h2>
+    <div class="title-table-">
+      <button
+        class="filter-button blue-button"
+        mat-raised-button
+        color="primary"
+      >
+        <mat-icon> local_printshop</mat-icon>
+        Drucken
+      </button>
+      <button class="blue-button" mat-raised-button color="primary">
+        <mat-icon> import_export</mat-icon> Exportieren
+      </button>
+    </div>
+  </div>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
       <ng-container matColumnDef="Nr.">

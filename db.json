@@ -44,6 +44,15 @@
       "action": "Apple",
       "date": 1671924914707,
       "id": 5
+    },
+    {
+      "category": "Alarm Manager",
+      "department": "Projektierung",
+      "user": "Julia Krüger",
+      "object": "Login",
+      "action": "HTML5",
+      "date": 1671928098051,
+      "id": 6
     }
   ],
   "comments": [

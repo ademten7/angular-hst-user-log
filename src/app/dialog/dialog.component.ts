@@ -15,8 +15,9 @@ export class DialogComponent implements OnInit {
   departments: string[] = this.actions.departments;
   objects: string[] = this.actions.objects;
   users: string[] = this.actions.users;
-
   userLogForm!: FormGroup;
+  actionBtn: string = 'Save';
+  dialogTitle: string = 'Neue Aktion Hinzufügen';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,6 +38,8 @@ export class DialogComponent implements OnInit {
     });
     //to pass the edit values on form
     if (this.editData) {
+      this.actionBtn = 'Bearbeiten';
+      this.dialogTitle = 'Aktualisieren der Aktion';
       this.userLogForm.controls['category'].setValue(this.editData.category);
       this.userLogForm.controls['department'].setValue(
         this.editData.department
@@ -48,16 +51,31 @@ export class DialogComponent implements OnInit {
   }
   addUserLog() {
     // console.log(this.userLogForm.value);
-    if (this.userLogForm.valid) {
-      this.api.postUserLog(this.userLogForm.value).subscribe({
-        next: (res) => {
-          this.userLogForm.reset();
-          this.dialogRef.close('save');
-        },
-        error: (err) => {
-          alert('Fehler beim Hinzufügen der Action');
-        },
-      });
+    if (!this.editData) {
+      if (this.userLogForm.valid) {
+        this.api.postUserLog(this.userLogForm.value).subscribe({
+          next: (res) => {
+            this.userLogForm.reset();
+            this.dialogRef.close('save');
+          },
+          error: (err) => {
+            alert('Fehler beim Hinzufügen der Action');
+          },
+        });
+      }
+    } else {
+      this.updateUserLog();
     }
+  }
+  updateUserLog() {
+    this.api.putUserLog(this.userLogForm.value, this.editData.id).subscribe({
+      next: (res) => {
+        this.userLogForm.reset();
+        this.dialogRef.close('update');
+      },
+      error: (err) => {
+        alert('Fehler beim Bearbeiten der Action');
+      },
+    });
   }
 }

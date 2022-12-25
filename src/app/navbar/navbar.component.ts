@@ -16,12 +16,12 @@ export class NavbarComponent implements OnInit {
     this.dialog.open(DialogComponent, {
       width: '30%',
     });
-    //.afterClosed()
-    //.subscribe((val) => {
-    //to get data without refresh the page
-    //if (val === 'save') {
-    //this.getAllTaskList();
-    // }
-    //});
+    // .afterClosed()
+    // .subscribe((val) => {
+    //   //to get data without refresh the page
+    //   if (val === 'save') {
+    //     this.getData.getData();
+    //   }
+    // });
   }
 }

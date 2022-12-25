@@ -20,7 +20,7 @@ export class UserLogComponent implements OnInit {
   objects: string[] = this.actions.objects;
   users: string[] = this.actions.users;
   fastSearch: string[] = this.actions.fastSearch;
-  searchUser: string = '';
+
   displayedColumns: string[] = [
     'Nr.',
     'Datum',
@@ -29,7 +29,7 @@ export class UserLogComponent implements OnInit {
     'Benutzer',
     'Objekt',
     'Aktionen',
-    'Edit/Delete',
+    'Bearbeiten/Löschen',
   ];
   dataSource!: MatTableDataSource<UserLog>;
 
@@ -51,7 +51,7 @@ export class UserLogComponent implements OnInit {
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.actions.allUserLogs = [...res];
+        this.actions.allUserLogs = this.dataSource.filteredData;
         //this.userLogList = this.api.allUserLogs;
         //console.log(this.userLogList);
         console.log(this.actions.allUserLogs);
@@ -61,10 +61,43 @@ export class UserLogComponent implements OnInit {
       },
     });
   }
+  openDialog(): void {
+    this.dialog
+      .open(DialogComponent, {
+        width: '30%',
+      })
+      .afterClosed()
+      .subscribe((val) => {
+        //to get data without refresh the page
+        if (val === 'save') {
+          this.getAllUserLog();
+        }
+      });
+  }
   editUserLog(row: UserLog) {
-    this.dialog.open(DialogComponent, {
-      width: '30%',
-      data: row,
+    this.dialog
+      .open(DialogComponent, {
+        width: '30%',
+        data: row,
+      })
+      .afterClosed()
+      .subscribe((val) => {
+        //to get data without refresh the page
+        if (val === 'update') {
+          this.getAllUserLog();
+        }
+      });
+  }
+
+  deleteUserLog(id: number) {
+    this.api.deleteUserLog(id).subscribe({
+      next: (res) => {
+        // console.log(res);
+        this.getAllUserLog();
+      },
+      error: (err) => {
+        alert('Error while deleting Product!!!');
+      },
     });
   }
 
@@ -76,5 +109,10 @@ export class UserLogComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  //printPage
+  printPage() {
+    window.print();
   }
 }

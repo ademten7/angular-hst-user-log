@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Neue Aktion Hinzufügen</h1>
+<h1 mat-dialog-title>{{ dialogTitle }}</h1>
 <div mat-dialog-content>
   <!--import ReactiveFormsModule and FormsModule(for [(ngModel)]) in app.module.ts-->
   <form [formGroup]="userLogForm" autocomplete="on">
@@ -46,13 +46,7 @@
   <button class="cancel-button" mat-raised-button mat-dialog-close color="warn">
     Cancel
   </button>
-  <button
-    mat-raised-button
-    color="primary"
-    mat-dialog-close
-    (click)="addUserLog()"
-  >
-    Save
-    <!-- {{ actionBtn }} -->
+  <button mat-raised-button color="primary" (click)="addUserLog()">
+    {{ actionBtn }}
   </button>
 </div>

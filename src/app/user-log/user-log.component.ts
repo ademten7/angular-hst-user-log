@@ -7,9 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActionsService } from '../services/actions.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-import * as _ from 'lodash';
 import { writeFileXLSX } from 'xlsx';
 import * as XLSX from 'xlsx';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-log',
@@ -30,6 +30,7 @@ export class UserLogComponent implements OnInit {
   filteredStartDate: string = '';
   filteredEndDate: string = '';
   filteredFastChoose: string = '';
+  showFirstLastButtons = true;
 
   displayedColumns: string[] = [
     'Nr.',
@@ -55,6 +56,7 @@ export class UserLogComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUserLog();
   }
+
   getAllUserLog() {
     this.api.getUserLogs().subscribe({
       next: (res: any) => {

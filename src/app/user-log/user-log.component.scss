@@ -129,3 +129,27 @@ th {
     display: none;
   }
 }
+@media (max-width: 849px) {
+  .nav-items {
+    flex-direction: column;
+  }
+}
+@media (max-width: 730px) {
+  table {
+    width: 70%;
+  }
+
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 50%;
+  }
+
+  th {
+    background-color: #2c64b2;
+    color: aliceblue;
+  }
+  .container {
+    max-width: 97%;
+    margin: 0 auto;
+  }
+}

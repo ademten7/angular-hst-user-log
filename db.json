@@ -89,6 +89,15 @@
       "action": "Mangos",
       "date": 1672005931471,
       "id": 17
+    },
+    {
+      "category": "System",
+      "department": "Projektierung",
+      "user": "Hendrik Fleitman",
+      "object": "Login",
+      "action": "Mangos",
+      "date": 1672014107860,
+      "id": 18
     }
   ],
   "comments": [

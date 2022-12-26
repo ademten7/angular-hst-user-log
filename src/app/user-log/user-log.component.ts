@@ -56,8 +56,7 @@ export class UserLogComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.actions.allUserLogs = this.dataSource.filteredData;
         //this.userLogList = this.api.allUserLogs;
-        //console.log(this.userLogList);
-        console.log(this.actions.allUserLogs);
+        console.log(this.dataSource);
       },
       error: (err) => {
         alert('Fehler beim Abruf von Aktionen!!!');

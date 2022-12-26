@@ -1,169 +1,176 @@
 <!-- Navbar -->
-<mat-toolbar color="primary">
-  <div class="hst">
-    <img src="../../assets/hst_logo.png" alt="image_hst1" />
-  </div>
-  <span class="header">Benutzerlogbuch</span>
-  <span class="example-spacer"></span>
+<div class="container-navbar">
+  <mat-toolbar color="primary">
+    <div class="hst">
+      <img src="../../assets/hst_logo.png" alt="image_hst1" />
+    </div>
+    <span class="header">Benutzerlogbuch</span>
+    <span class="example-spacer"></span>
 
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>search</mat-icon>
-  </button>
-
-  <div class="buttons">
     <button
       mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
     >
-      <mat-icon>alarm</mat-icon>
+      <mat-icon>search</mat-icon>
     </button>
-  </div>
-  <div class="user-items">
-    <img class="image-user" src="../../assets/user.png" alt="user" />
-    <span class="user-name">Tobias Kraus</span>
-    <mat-icon>keyboard_arrow_down</mat-icon>
-  </div>
-</mat-toolbar>
 
-<div class="navbar">
-  <ul class="nav-items">
-    <li class="nav-item">Dashboard</li>
-    <li class="nav-item">Übersicht</li>
-    <li class="nav-item">Anlagenzustand</li>
-    <li class="nav-item">Analyse</li>
-    <li class="nav-item">Einstellungen</li>
-    <li class="nav-item">Alarm-Manager</li>
-    <li class="nav-item">Benutzerverwaltung</li>
-    <li class="nav-item">Administration</li>
-  </ul>
+    <div class="buttons">
+      <button
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with share icon"
+      >
+        <mat-icon>alarm</mat-icon>
+      </button>
+    </div>
+    <div class="user-items">
+      <img class="image-user" src="../../assets/user.png" alt="user" />
+      <span class="user-name">Tobias Kraus</span>
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </div>
+  </mat-toolbar>
+
+  <div class="navbar">
+    <ul class="nav-items">
+      <li class="nav-item">Dashboard</li>
+      <li class="nav-item">Übersicht</li>
+      <li class="nav-item">Anlagenzustand</li>
+      <li class="nav-item">Analyse</li>
+      <li class="nav-item">Einstellungen</li>
+      <li class="nav-item">Alarm-Manager</li>
+      <li class="nav-item">Benutzerverwaltung</li>
+      <li class="nav-item">Administration</li>
+    </ul>
+  </div>
+  <div>
+    <ul class="sub-nav">
+      <li class="home-icon">
+        <mat-icon>home</mat-icon>
+      </li>
+      <li class="arrow">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </li>
+      <li class="first-path">Benutzerverwaltung</li>
+      <li class="arrow">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </li>
+      <li class="second-path">Benutzerlogbuch</li>
+    </ul>
+  </div>
 </div>
-<div>
-  <ul class="sub-nav">
-    <li class="home-icon">
-      <mat-icon>home</mat-icon>
-    </li>
-    <li class="arrow">
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </li>
-    <li class="first-path">Benutzerverwaltung</li>
-    <li class="arrow">
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </li>
-    <li class="second-path">Benutzerlogbuch</li>
-  </ul>
-</div>
-<div>
-  <button
-    (click)="openDialog()"
-    mat-raised-button
-    class="example-icon favorite-icon new-action-button"
-    aria-label="Example icon-button with heart icon"
-  >
-    + Neue Aktion
-  </button>
-</div>
-<!--Filter  -->
+
 <div class="container">
-  <h2>Benutzerlogbuch</h2>
-  <div class="filter-top">
-    <mat-form-field appearance="outline" class="example-form-field-search">
-      <mat-label>Wonach Suchen Sie? </mat-label>
-      <input matInput (keyup)="applyFilter($event)" #input />
-    </mat-form-field>
-    <!-- mandant -->
-    <mat-form-field appearance="outline" class="example-form-field">
-      <mat-label>Mandant</mat-label>
-      <mat-select placeholder="Mandant">
-        <mat-option *ngFor="let item of departments" [value]="item">{{
-          item
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="example-form-field">
-      <mat-label>Benutzer</mat-label>
-      <mat-select placeholder="Benutzer">
-        <mat-option *ngFor="let item of users" [value]="item">{{
-          item
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="example-form-field">
-      <mat-label>Objekt</mat-label>
-      <mat-select placeholder="Objekt">
-        <mat-option *ngFor="let item of objects" [value]="item">{{
-          item
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div>
-      <mat-form-field appearance="outline" class="example-form-field">
-        <mat-label>Zeitraum Start</mat-label>
-        <input matInput [matDatepicker]="startPicker" />
-
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="startPicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #startPicker></mat-datepicker>
+  <!--Filter  -->
+  <div class="container-filter">
+    <h2>Benutzerlogbuch</h2>
+    <div class="filter-top">
+      <mat-form-field appearance="outline" class="example-form-field-search">
+        <mat-label>Wonach Suchen Sie? </mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input />
       </mat-form-field>
+      <!-- mandant -->
       <mat-form-field appearance="outline" class="example-form-field">
-        <mat-label>Zeitraum Ende</mat-label>
-        <input matInput [matDatepicker]="endPicker" />
-
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="endPicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #endPicker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="example-form-field">
-        <mat-label>Schnellauswahl</mat-label>
-        <mat-select placeholder="Benutzer">
-          <mat-option *ngFor="let item of fastSearch" [value]="item">{{
+        <mat-label>Mandant</mat-label>
+        <mat-select placeholder="Mandant">
+          <mat-option *ngFor="let item of departments" [value]="item">{{
             item
           }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <button
-        class="filter-button blue-button"
-        mat-raised-button
-        color="primary"
-      >
-        <mat-icon>filter_list</mat-icon>
-        Filter
-      </button>
-      <button mat-raised-button color="warn">
-        <mat-icon>delete</mat-icon> Löschen
-      </button>
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Benutzer</mat-label>
+        <mat-select placeholder="Benutzer">
+          <mat-option *ngFor="let item of users" [value]="item">{{
+            item
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Objekt</mat-label>
+        <mat-select placeholder="Objekt">
+          <mat-option *ngFor="let item of objects" [value]="item">{{
+            item
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="outline" class="example-form-field">
+          <mat-label>Zeitraum Start</mat-label>
+          <input matInput [matDatepicker]="startPicker" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="startPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-form-field">
+          <mat-label>Zeitraum Ende</mat-label>
+          <input matInput [matDatepicker]="endPicker" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="endPicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-form-field">
+          <mat-label>Schnellauswahl</mat-label>
+          <mat-select placeholder="Benutzer">
+            <mat-option *ngFor="let item of fastSearch" [value]="item">{{
+              item
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button
+          class="filter-button blue-button"
+          mat-raised-button
+          color="primary"
+        >
+          <mat-icon>filter_list</mat-icon>
+          Filter
+        </button>
+        <button mat-raised-button color="warn">
+          <mat-icon>delete</mat-icon> Löschen
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="title-table-continer">
-    <h2>Ergebnissie</h2>
-    <div class="title-table-">
-      <button
-        (click)="printPage()"
-        class="filter-button blue-button"
-        mat-raised-button
-        color="primary"
-      >
-        <mat-icon> local_printshop</mat-icon>
-        Drucken
-      </button>
-      <button class="blue-button" mat-raised-button color="primary">
-        <mat-icon> import_export</mat-icon> Exportieren
-      </button>
+    <div class="title-table-continer">
+      <h2>Ergebnissie</h2>
+      <div class="title-table">
+        <button
+          (click)="openDialog()"
+          mat-raised-button
+          class="filter-button blue-button"
+          aria-label="Example icon-button with heart icon"
+        >
+          + Neue Aktion
+        </button>
+
+        <button
+          (click)="printTable()"
+          class="filter-button blue-button"
+          mat-raised-button
+          color="primary"
+        >
+          <mat-icon> local_printshop</mat-icon>
+          Drucken
+        </button>
+        <button
+          (click)="exportExcel()"
+          class="blue-button"
+          mat-raised-button
+          color="primary"
+        >
+          <mat-icon> import_export</mat-icon> Exportieren
+        </button>
+      </div>
     </div>
   </div>
 
   <!--Table  -->
 
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table [dataSource]="dataSource" matSort id="excel-table">
       <ng-container matColumnDef="Nr.">
         <th mat-header-cell *matHeaderCellDef>Nr.</th>
         <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>

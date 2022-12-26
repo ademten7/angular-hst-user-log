@@ -7,6 +7,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActionsService } from '../services/actions.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { writeFileXLSX, writeXLSX, XLSX$Consts } from 'xlsx';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-user-log',
@@ -20,6 +22,7 @@ export class UserLogComponent implements OnInit {
   objects: string[] = this.actions.objects;
   users: string[] = this.actions.users;
   fastSearch: string[] = this.actions.fastSearch;
+  fileName: string = 'Aktionen.xlsx';
 
   displayedColumns: string[] = [
     'Nr.',
@@ -111,8 +114,18 @@ export class UserLogComponent implements OnInit {
     }
   }
 
-  //printPage
-  printPage() {
+  //print table
+  printTable() {
     window.print();
+  }
+  //export to excel
+  exportExcel() {
+    let element = document.getElementById('excel-table');
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    writeFileXLSX(wb, this.fileName);
   }
 }

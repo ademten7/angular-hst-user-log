@@ -111,6 +111,7 @@ th {
 }
 .blue-button {
   background-color: #2c64b2;
+  color: white;
 }
 .mat-sort-header-arrow {
   color: white !important;
@@ -119,4 +120,12 @@ th {
   text-align: center;
   font-size: 20px;
   font-weight: bold;
+}
+
+@media print {
+  button,
+  .container-filter,
+  .container-navbar {
+    display: none;
+  }
 }

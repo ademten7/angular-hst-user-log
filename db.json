@@ -44,6 +44,51 @@
       "action": "Mangos",
       "date": 1672005931471,
       "id": 12
+    },
+    {
+      "category": "System",
+      "department": "Planung",
+      "user": "Julia Krüger",
+      "object": "Aktualisieren",
+      "action": "CSS3",
+      "date": 1672007180213,
+      "id": 13
+    },
+    {
+      "category": "System",
+      "department": "Projektierung",
+      "user": "Julia Krüger",
+      "object": "Login",
+      "action": "HTML",
+      "date": 1672002975935,
+      "id": 14
+    },
+    {
+      "category": "Betriebsstundenzähler",
+      "department": "Projektierung",
+      "user": "Julia Krüger",
+      "object": "Login",
+      "action": "Mango",
+      "date": 1672003020388,
+      "id": 15
+    },
+    {
+      "category": "System",
+      "department": "Projektierung",
+      "user": "Julia Krüger",
+      "object": "Aktualisieren",
+      "action": "CSS3",
+      "date": 1672003403396,
+      "id": 16
+    },
+    {
+      "category": "System",
+      "department": "Projektierung",
+      "user": "Hendrik Fleitman",
+      "object": "Login",
+      "action": "Mangos",
+      "date": 1672005931471,
+      "id": 17
     }
   ],
   "comments": [

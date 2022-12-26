@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActionsService } from '../services/actions.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-import { writeFileXLSX, writeXLSX, XLSX$Consts } from 'xlsx';
+import { writeFileXLSX } from 'xlsx';
 import * as XLSX from 'xlsx';
 
 @Component({

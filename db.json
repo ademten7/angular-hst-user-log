@@ -71,6 +71,33 @@
       "action": "Mangos",
       "date": 1672005931471,
       "id": 17
+    },
+    {
+      "category": "System",
+      "department": "Projektierung",
+      "user": "Julia Krüger",
+      "object": "Aktualisieren",
+      "action": "CSS3",
+      "date": 1672076139090,
+      "id": 18
+    },
+    {
+      "category": "Analyse",
+      "department": "DB Archive",
+      "user": "Lea Flitz",
+      "object": "Löschen",
+      "action": "Samsung",
+      "date": 1672077903481,
+      "id": 19
+    },
+    {
+      "category": "Alarm Manager",
+      "department": "Personalabteilung",
+      "user": "Carla Maximilian",
+      "object": "Löschen",
+      "action": "Iphone",
+      "date": 1672077933644,
+      "id": 20
     }
   ],
   "comments": [

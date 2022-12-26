@@ -26,7 +26,7 @@ export class UserLogComponent implements OnInit {
   fileName: string = 'Aktionen.xlsx';
   filteredDepartment: string = '';
   filteredUser: string = '';
-  filteredObject: string = '';
+  filteredCategory: string = '';
   filteredStartDate: string = '';
   filteredEndDate: string = '';
   filteredFastChoose: string = '';
@@ -111,7 +111,7 @@ export class UserLogComponent implements OnInit {
     });
   }
 
-  // to filter user Logs
+  // to filter with only input box
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -121,52 +121,62 @@ export class UserLogComponent implements OnInit {
     }
   }
 
+  //to filter with dropdowns
   onUserLogFilter() {
     let filteredData = [...this.userLogList];
     if (this.filteredDepartment) {
-      filteredData = filteredData.filter((item) => {
-        return item.department === this.filteredDepartment;
-      });
+      filteredData = filteredData.filter(
+        (item) => item.department === this.filteredDepartment
+      );
     }
     if (this.filteredUser) {
       filteredData = filteredData.filter(
         (item) => item.user === this.filteredUser
       );
     }
-    if (this.filteredObject) {
+    if (this.filteredCategory) {
       filteredData = filteredData.filter(
-        (item) => item.object === this.filteredObject
+        (item) => item.category === this.filteredCategory
       );
     }
+
+    if (this.filteredStartDate && this.filteredEndDate) {
+      let startTime = new Date(this.filteredStartDate).getTime();
+      let endTime = new Date(this.filteredEndDate).getTime();
+      filteredData = filteredData.filter(
+        (item) =>
+          new Date(item.date).getTime() >= startTime &&
+          new Date(item.date).getTime() <= endTime
+      );
+    }
+
     if (this.filteredFastChoose) {
       filteredData = filteredData.filter(
         (item) =>
           item.user === this.filteredFastChoose ||
-          item.object === this.filteredFastChoose ||
+          item.category === this.filteredFastChoose ||
           item.department === this.filteredFastChoose
       );
     }
     this.dataSource = new MatTableDataSource(filteredData);
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   onUserLogFilterClear() {
     this.filteredDepartment = '';
     this.filteredUser = '';
-    this.filteredObject = '';
+    this.filteredCategory = '';
     this.filteredStartDate = '';
     this.filteredEndDate = '';
     this.filteredFastChoose = '';
 
     this.dataSource = new MatTableDataSource(this.userLogList);
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
-
-  // onChangeFilter($event: any) {
-  //   let filteredData = _.filter(this.userLogList, (item) => {
-  //     return item.department.toLowerCase() === $event.value.toLowerCase();
-  //   });
-  //   this.dataSource = new MatTableDataSource(filteredData);
-  // }
-
   //print table
   printTable() {
     window.print();

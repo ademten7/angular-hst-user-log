@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActionsService } from '../services/actions.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import * as _ from 'lodash';
 import { writeFileXLSX } from 'xlsx';
 import * as XLSX from 'xlsx';
 
@@ -16,13 +17,19 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./user-log.component.scss'],
 })
 export class UserLogComponent implements OnInit {
-  // userLogList: UserLog[] = [];
+  userLogList: UserLog[] = [];
   categories: string[] = this.actions.categories;
   departments: string[] = this.actions.departments;
   objects: string[] = this.actions.objects;
   users: string[] = this.actions.users;
   fastSearch: string[] = this.actions.fastSearch;
   fileName: string = 'Aktionen.xlsx';
+  filteredDepartment: string = '';
+  filteredUser: string = '';
+  filteredObject: string = '';
+  filteredStartDate: string = '';
+  filteredEndDate: string = '';
+  filteredFastChoose: string = '';
 
   displayedColumns: string[] = [
     'Nr.',
@@ -51,11 +58,12 @@ export class UserLogComponent implements OnInit {
   getAllUserLog() {
     this.api.getUserLogs().subscribe({
       next: (res: any) => {
+        this.userLogList = res; //to keep filter data
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
         this.actions.allUserLogs = this.dataSource.filteredData;
-        //this.userLogList = this.api.allUserLogs;
+
         console.log(this.dataSource);
       },
       error: (err) => {
@@ -112,6 +120,52 @@ export class UserLogComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  onUserLogFilter() {
+    let filteredData = [...this.userLogList];
+    if (this.filteredDepartment) {
+      filteredData = filteredData.filter((item) => {
+        return item.department === this.filteredDepartment;
+      });
+    }
+    if (this.filteredUser) {
+      filteredData = filteredData.filter(
+        (item) => item.user === this.filteredUser
+      );
+    }
+    if (this.filteredObject) {
+      filteredData = filteredData.filter(
+        (item) => item.object === this.filteredObject
+      );
+    }
+    if (this.filteredFastChoose) {
+      filteredData = filteredData.filter(
+        (item) =>
+          item.user === this.filteredFastChoose ||
+          item.object === this.filteredFastChoose ||
+          item.department === this.filteredFastChoose
+      );
+    }
+    this.dataSource = new MatTableDataSource(filteredData);
+  }
+
+  onUserLogFilterClear() {
+    this.filteredDepartment = '';
+    this.filteredUser = '';
+    this.filteredObject = '';
+    this.filteredStartDate = '';
+    this.filteredEndDate = '';
+    this.filteredFastChoose = '';
+
+    this.dataSource = new MatTableDataSource(this.userLogList);
+  }
+
+  // onChangeFilter($event: any) {
+  //   let filteredData = _.filter(this.userLogList, (item) => {
+  //     return item.department.toLowerCase() === $event.value.toLowerCase();
+  //   });
+  //   this.dataSource = new MatTableDataSource(filteredData);
+  // }
 
   //print table
   printTable() {

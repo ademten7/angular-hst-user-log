@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { UserLogComponent } from './user-log/user-log.component';
+
 
 @Component({
   selector: 'app-root',

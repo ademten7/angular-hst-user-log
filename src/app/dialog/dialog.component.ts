@@ -62,8 +62,8 @@ export class DialogComponent implements OnInit {
             alert('Fehler beim Hinzufügen der Action');
           },
         });
-      }
-    } else {
+      } 
+    }else {
       this.updateUserLog();
     }
   }
